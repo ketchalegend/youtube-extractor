@@ -12,6 +12,16 @@ A command-line tool that extracts audio from YouTube videos and playlists, conve
 - Progress tracking and error recovery
 - Cross-platform compatibility
 
+## Screenshots
+
+Here are some examples of the tool in action:
+
+### Playlist Processing
+![Playlist Processing](image/Bildschirmfoto%202025-09-17%20um%2022.34.46.png)
+
+### Playlist Processing complete
+![Playlist Processing complete](image/Bildschirmfoto%202025-09-17%20um%2023.03.31.png)
+
 ## Installation
 
 ### Prerequisites
