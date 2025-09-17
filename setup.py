@@ -7,8 +7,18 @@ from pathlib import Path
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="utf-8")
 
-with open("requirements.txt", "r", encoding="utf-8") as f:
-    requirements = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+# Read requirements.txt if it exists
+try:
+    with open("requirements.txt", "r", encoding="utf-8") as f:
+        requirements = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+except FileNotFoundError:
+    # Fallback requirements if requirements.txt is not found
+    requirements = [
+        "yt-dlp>=2023.7.6",
+        "ffmpeg-python>=0.2.0", 
+        "mutagen>=1.47.0",
+        "click>=8.1.0"
+    ]
 
 setup(
     name="youtube-audio-extractor",
