@@ -62,3 +62,6 @@ error_report.log
 # Temporary files
 *.tmp
 *.temp
+
+# Kiro folder
+.kiro/
