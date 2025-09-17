@@ -24,74 +24,50 @@ Here are some examples of the tool in action:
 
 ## Installation
 
-### Quick Install (Recommended)
-
-**Install from PyPI:**
+### Install from PyPI
 
 ```bash
 pip install youtube-audio-extractor
 ```
 
-**That's it!** The package will automatically install all dependencies. You can now use the `youtube-audio-extractor` command directly.
+**That's it!** The package will automatically install all dependencies.
 
 ### Prerequisites
 
-1. **Python 3.8 or higher**
+**Python 3.8 or higher** is required. Check your version:
+```bash
+python --version
+```
 
+**ffmpeg** is required for audio conversion:
+
+- **macOS:** `brew install ffmpeg`
+- **Ubuntu/Debian:** `sudo apt install ffmpeg`
+- **Windows:** Download from [ffmpeg.org](https://ffmpeg.org/download.html) or use `choco install ffmpeg`
+
+Verify ffmpeg installation:
+```bash
+ffmpeg -version
+```
+
+## Quick Start
+
+1. **Install the package:**
    ```bash
-   python --version  # Should show 3.8 or higher
+   pip install youtube-audio-extractor
    ```
 
-2. **ffmpeg** (required for audio conversion)
-
-   **On macOS:**
-
+2. **Extract audio from a video:**
    ```bash
-   brew install ffmpeg
+   youtube-audio-extractor "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
    ```
 
-   **On Ubuntu/Debian:**
-
+3. **Extract a playlist:**
    ```bash
-   sudo apt update
-   sudo apt install ffmpeg
+   youtube-audio-extractor "https://www.youtube.com/playlist?list=PLAYLIST_ID"
    ```
 
-   **On Windows:**
-
-   - Download from [ffmpeg.org](https://ffmpeg.org/download.html)
-   - Add to your system PATH
-   - Or use chocolatey: `choco install ffmpeg`
-
-3. **Verify ffmpeg installation:**
-   ```bash
-   ffmpeg -version
-   ```
-
-### Alternative: Install from Source
-
-If you prefer to install from source:
-
-1. **Clone or download the project**
-
-   ```bash
-   git clone https://github.com/ketchalegend/youtube-extractor.git
-   cd youtube-extractor
-   ```
-
-2. **Install Python dependencies**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Install the package**
-
-   ```bash
-   pip install -e .
-   ```
-
-   After installation, you can use `youtube-audio-extractor` command directly.
+That's it! Your MP3 files will be saved in the `downloads` folder.
 
 ## Usage
 
@@ -292,7 +268,7 @@ youtube-audio-extractor -v "YOUR_URL"
 ```bash
 python --version    # Should be 3.8+
 ffmpeg -version     # Should show ffmpeg information
-pip list | grep -E "(youtube-audio-extractor|yt-dlp|ffmpeg|mutagen|click)"  # Check dependencies
+pip show youtube-audio-extractor  # Check if package is installed
 ```
 
 **Test with a known working video:**
@@ -366,6 +342,8 @@ youtube-audio-extractor --fast-validation --batch-size 5 -q 192 "LARGE_PLAYLIST_
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributing
+
+Want to contribute or install from source? Check out the [GitHub repository](https://github.com/ketchalegend/youtube-extractor).
 
 1. Fork the repository
 2. Create a feature branch
