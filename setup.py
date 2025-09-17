@@ -22,7 +22,7 @@ except FileNotFoundError:
 
 setup(
     name="youtube-audio-extractor",
-    version="1.0.1",
+    version="1.0.2",
     author="KetchaLegend",
     author_email="your-email@example.com",  # Update this with your email
     description="Extract audio from YouTube videos and playlists, convert to MP3 format",
