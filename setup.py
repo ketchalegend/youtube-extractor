@@ -24,7 +24,7 @@ setup(
     name="youtube-audio-extractor",
     version="1.0.2",
     author="KetchaLegend",
-    author_email="your-email@example.com",  # Update this with your email
+    author_email="kbepa02@gmail.com",
     description="Extract audio from YouTube videos and playlists, convert to MP3 format",
     long_description=long_description,
     long_description_content_type="text/markdown",
