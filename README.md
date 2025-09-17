@@ -24,6 +24,16 @@ Here are some examples of the tool in action:
 
 ## Installation
 
+### Quick Install (Recommended)
+
+**Install from PyPI:**
+
+```bash
+pip install youtube-audio-extractor
+```
+
+**That's it!** The package will automatically install all dependencies. You can now use the `youtube-audio-extractor` command directly.
+
 ### Prerequisites
 
 1. **Python 3.8 or higher**
@@ -58,13 +68,15 @@ Here are some examples of the tool in action:
    ffmpeg -version
    ```
 
-### Install the Tool
+### Alternative: Install from Source
+
+If you prefer to install from source:
 
 1. **Clone or download the project**
 
    ```bash
-   git clone <repository-url>
-   cd youtube-audio-extractor
+   git clone https://github.com/ketchalegend/youtube-extractor.git
+   cd youtube-extractor
    ```
 
 2. **Install Python dependencies**
@@ -73,7 +85,7 @@ Here are some examples of the tool in action:
    pip install -r requirements.txt
    ```
 
-3. **Install the package (optional)**
+3. **Install the package**
 
    ```bash
    pip install -e .
@@ -88,19 +100,19 @@ Here are some examples of the tool in action:
 **Extract a single video:**
 
 ```bash
-python -m src.main "https://www.youtube.com/watch?v=VIDEO_ID"
+youtube-audio-extractor "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
 **Extract a playlist:**
 
 ```bash
-python -m src.main "https://www.youtube.com/playlist?list=PLAYLIST_ID"
+youtube-audio-extractor "https://www.youtube.com/playlist?list=PLAYLIST_ID"
 ```
 
 ### Command Options
 
 ```bash
-python -m src.main [OPTIONS] URL
+youtube-audio-extractor [OPTIONS] URL
 ```
 
 **Options:**
@@ -117,28 +129,28 @@ python -m src.main [OPTIONS] URL
 **High-quality single video:**
 
 ```bash
-python -m src.main -q 320 "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+youtube-audio-extractor -q 320 "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ```
 
 **Playlist to custom directory:**
 
 ```bash
-python -m src.main -o ~/Music/Playlists "https://www.youtube.com/playlist?list=PLrAXtmRdnEQy6nuLMt9xaJGA6H_VjlXEL"
+youtube-audio-extractor -o ~/Music/Playlists "https://www.youtube.com/playlist?list=PLrAXtmRdnEQy6nuLMt9xaJGA6H_VjlXEL"
 ```
 
 **Lower quality for faster downloads:**
 
 ```bash
-python -m src.main -q 128 -v "https://www.youtube.com/watch?v=VIDEO_ID"
+youtube-audio-extractor -q 128 -v "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
 **Without metadata embedding:**
 
 ```bash
-python -m src.main --no-metadata "https://www.youtube.com/watch?v=VIDEO_ID"
+youtube-audio-extractor --no-metadata "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
-**If installed as package:**
+**Custom output directory:**
 
 ```bash
 youtube-audio-extractor -q 320 -o ~/Music "https://www.youtube.com/watch?v=VIDEO_ID"
@@ -272,7 +284,7 @@ Error: The provided URL is not a valid YouTube URL
 **Enable verbose logging for detailed error information:**
 
 ```bash
-python -m src.main -v "YOUR_URL"
+youtube-audio-extractor -v "YOUR_URL"
 ```
 
 **Check system requirements:**
@@ -280,13 +292,13 @@ python -m src.main -v "YOUR_URL"
 ```bash
 python --version    # Should be 3.8+
 ffmpeg -version     # Should show ffmpeg information
-pip list | grep -E "(yt-dlp|ffmpeg|mutagen|click)"  # Check dependencies
+pip list | grep -E "(youtube-audio-extractor|yt-dlp|ffmpeg|mutagen|click)"  # Check dependencies
 ```
 
 **Test with a known working video:**
 
 ```bash
-python -m src.main "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+youtube-audio-extractor "https://www.youtube.com/watch?v=jNQXAC9IVRw"
 ```
 
 ## Performance Tips
@@ -334,19 +346,19 @@ python -m src.main "https://www.youtube.com/watch?v=jNQXAC9IVRw"
 ### Fast Validation for Large Playlists
 For playlists with many videos (50+), use fast validation to skip thorough checking:
 ```bash
-python -m src.main --fast-validation "LARGE_PLAYLIST_URL"
+youtube-audio-extractor --fast-validation "LARGE_PLAYLIST_URL"
 ```
 
 ### Batch Processing
 Process multiple videos with improved performance:
 ```bash
-python -m src.main --batch-size 3 "PLAYLIST_URL"
+youtube-audio-extractor --batch-size 3 "PLAYLIST_URL"
 ```
 
 ### Combined Optimizations
 For maximum speed on large playlists:
 ```bash
-python -m src.main --fast-validation --batch-size 5 -q 192 "LARGE_PLAYLIST_URL"
+youtube-audio-extractor --fast-validation --batch-size 5 -q 192 "LARGE_PLAYLIST_URL"
 ```
 
 ## License
