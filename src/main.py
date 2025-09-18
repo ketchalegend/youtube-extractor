@@ -185,10 +185,17 @@ def validate_dependencies() -> None:
     type=int,
     help='Number of videos to process in parallel (1-10, default: 5)'
 )
+@click.option(
+    '--cookie-path',
+    type=str,
+    default=None,
+    help='Path to cookies.txt (Netscape format) to pass to yt-dlp for authenticated requests'
+)
 @click.help_option('--help', '-h')
 @click.version_option(version=config.APP_VERSION, prog_name=config.APP_NAME)
 def main(url: str, quality: str, output: str, playlist_folder: bool, 
-         metadata: bool, verbose: bool, fast_validation: bool, batch_size: int) -> None:
+         metadata: bool, verbose: bool, fast_validation: bool, batch_size: int,
+         cookie_path: Optional[str]) -> None:
     """
     Extract audio from YouTube videos and playlists.
     
@@ -228,6 +235,8 @@ def main(url: str, quality: str, output: str, playlist_folder: bool,
         logger.info(f"Verbose logging enabled")
         logger.info(f"Playlist folders: {'enabled' if playlist_folder else 'disabled'}")
         logger.info(f"Metadata embedding: {'enabled' if metadata else 'disabled'}")
+        if cookie_path:
+            logger.info(f"Using cookies from: {cookie_path}")
     
     try:
         # Initialize error handler
@@ -252,7 +261,8 @@ def main(url: str, quality: str, output: str, playlist_folder: bool,
         options = ExtractionOptions(
             quality=quality,
             output_dir=output,
-            embed_metadata=metadata
+            embed_metadata=metadata,
+            cookie_path=cookie_path
         )
         
         # Initialize extractor with progress tracker

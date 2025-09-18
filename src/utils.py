@@ -93,6 +93,10 @@ class ExtractionOptions:
                               Defaults to "%(title)s.%(ext)s".
         embed_metadata (bool): Whether to embed ID3 metadata in MP3 files.
                               Defaults to True.
+        cookie_path (Optional[str]): Path to a Netscape-format cookies.txt file
+                                     used by yt-dlp to authenticate requests.
+                                     Useful to avoid rate limits or access
+                                     age/region restricted content.
         
     Example:
         >>> options = ExtractionOptions(
@@ -107,6 +111,7 @@ class ExtractionOptions:
     output_dir: str = "downloads"
     format_template: str = "%(title)s.%(ext)s"
     embed_metadata: bool = True
+    cookie_path: Optional[str] = None
 
 
 def sanitize_filename(filename: str) -> str:

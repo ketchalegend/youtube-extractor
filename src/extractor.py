@@ -73,6 +73,11 @@ class YouTubeExtractor:
                 'preferredquality': self.options.quality,
             }],
         }
+
+        # Attach cookies file if provided
+        if getattr(self.options, 'cookie_path', None):
+            # yt-dlp expects key 'cookiefile'
+            self.ydl_opts['cookiefile'] = self.options.cookie_path
         
         # Add progress hook if tracker is provided
         if self.progress_tracker:
@@ -103,7 +108,10 @@ class YouTubeExtractor:
             ...     print(f"Duration: {info.duration} seconds")
         """
         try:
-            with yt_dlp.YoutubeDL({'quiet': True, 'no_warnings': True}) as ydl:
+            base_info_opts = {'quiet': True, 'no_warnings': True}
+            if getattr(self.options, 'cookie_path', None):
+                base_info_opts['cookiefile'] = self.options.cookie_path
+            with yt_dlp.YoutubeDL(base_info_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
                 
                 return VideoInfo(
@@ -177,7 +185,10 @@ class YouTubeExtractor:
         
         # First, get video info
         try:
-            with yt_dlp.YoutubeDL({'quiet': True, 'no_warnings': True}) as ydl:
+            base_info_opts = {'quiet': True, 'no_warnings': True}
+            if getattr(self.options, 'cookie_path', None):
+                base_info_opts['cookiefile'] = self.options.cookie_path
+            with yt_dlp.YoutubeDL(base_info_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
                 if not info:
                     self.logger.error(f"Could not extract video information for {url}")
@@ -312,7 +323,10 @@ class YouTubeExtractor:
             ...     print("Processing as single video")
         """
         try:
-            with yt_dlp.YoutubeDL({'quiet': True, 'no_warnings': True}) as ydl:
+            base_info_opts = {'quiet': True, 'no_warnings': True}
+            if getattr(self.options, 'cookie_path', None):
+                base_info_opts['cookiefile'] = self.options.cookie_path
+            with yt_dlp.YoutubeDL(base_info_opts) as ydl:
                 info = ydl.extract_info(url, download=False)
                 # Check if this is a playlist by looking for entries
                 return info and 'entries' in info and len(info.get('entries', [])) > 1
