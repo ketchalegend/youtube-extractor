@@ -97,6 +97,7 @@ youtube-audio-extractor [OPTIONS] URL
 - `-o, --output`: Output directory - default: downloads
 - `--playlist-folder/--no-playlist-folder`: Create folders for playlists - default: enabled
 - `--metadata/--no-metadata`: Embed metadata in MP3 files - default: enabled
+- `--cookie-path`: Path to cookies.txt (Netscape format) to pass to yt-dlp
 - `-v, --verbose`: Enable detailed logging
 - `-h, --help`: Show help message
 
@@ -131,6 +132,14 @@ youtube-audio-extractor --no-metadata "https://www.youtube.com/watch?v=VIDEO_ID"
 ```bash
 youtube-audio-extractor -q 320 -o ~/Music "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
+
+**Use cookies to avoid throttling/restrictions:**
+
+```bash
+youtube-audio-extractor --cookie-path /path/to/cookies.txt "https://www.youtube.com/watch?v=VIDEO_ID"
+```
+
+Export cookies from your browser in Netscape format (e.g., using a cookies.txt exporter extension) and pass the file via `--cookie-path`.
 
 ## Output Structure
 
